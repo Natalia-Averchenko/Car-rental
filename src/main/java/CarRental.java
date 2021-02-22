@@ -1,12 +1,14 @@
 import com.carrental.model.Owner;
 import com.carrental.model.Renter;
+import org.apache.log4j.Logger;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.SQLException;
 import java.util.Scanner;
 
-public class CarRental {
+public class CarRental{
+
+    private static final Logger logger = Logger.getLogger(CarRental.class.getName());
 
     public static void main(String[] args) {
 
@@ -16,7 +18,7 @@ public class CarRental {
         try {
             Class.forName("org.postgresql.Driver");
         } catch (ClassNotFoundException e) {
-            System.out.println("ClassNotFoundException при загрузке класса драйвера БД");
+            logger.error("ClassNotFoundException при загрузке класса драйвера БД",e);
         }
 
         try (Connection con = DriverManager.getConnection("jdbc:postgresql://localhost/car_rental", conf.getUsername(), conf.getPassword());
@@ -39,9 +41,11 @@ public class CarRental {
             }
 
 
-        } catch (SQLException e) {
-            e.printStackTrace();
-            System.out.println("SQLException");
+        } /*catch (SQLException e) {
+            logger.error("SQLException",e);
+        } */
+        catch (Exception e){
+            logger.error("Exception",e);
         }
 
     }
