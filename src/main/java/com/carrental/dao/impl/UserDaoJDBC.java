@@ -1,4 +1,12 @@
-import java.sql.*;
+package com.carrental.dao.impl;
+
+import com.carrental.dao.UserDao;
+import com.carrental.model.User;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 

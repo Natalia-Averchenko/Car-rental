@@ -1,3 +1,5 @@
+package com.carrental.model;
+
 public class Car {
 
     private int carId;

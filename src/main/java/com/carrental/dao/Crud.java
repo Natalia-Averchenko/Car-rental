@@ -1,3 +1,5 @@
+package com.carrental.dao;
+
 import java.sql.SQLException;
 
 public interface Crud<T,K> {

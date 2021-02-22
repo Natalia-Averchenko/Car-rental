@@ -1,3 +1,5 @@
+package com.carrental.model;
+
 import java.sql.Timestamp;
 
 public class Rent {

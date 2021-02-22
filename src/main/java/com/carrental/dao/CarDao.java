@@ -1,3 +1,7 @@
+package com.carrental.dao;
+
+import com.carrental.model.Car;
+
 import java.sql.SQLException;
 import java.util.List;
 

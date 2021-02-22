@@ -1,6 +1,13 @@
+package com.carrental.dao.impl;
+
+import com.carrental.dao.RentDao;
+import com.carrental.model.Rent;
+
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class RentDaoJDBC implements RentDao {
 
@@ -69,13 +76,13 @@ public class RentDaoJDBC implements RentDao {
 
     }
 
-    public List<Integer> getCarsIDForRent(Timestamp fromDate, Timestamp toDate) throws SQLException{
+    public Set<Integer> getCarsIDForRent(Timestamp fromDate, Timestamp toDate) throws SQLException{
         String sql = "SELECT car_id FROM (cars LEFT JOIN (SELECT car_id,rent.user_id FROM (cars LEFT JOIN rent USING (car_id)) WHERE ( ? between from_date and to_date) OR ( ? between from_date and to_date)) AS notavailable USING (car_id)) WHERE user_id IS NULL";
         PreparedStatement ps = con.prepareStatement(sql);
         ps.setTimestamp(1,fromDate);
         ps.setTimestamp(2,toDate);
         ResultSet rs = ps.executeQuery();
-        List<Integer> carsIDForRent = new ArrayList<>();
+        Set<Integer> carsIDForRent = new HashSet<>();
         while(rs.next()){
             carsIDForRent.add(rs.getInt("car_id"));
         }

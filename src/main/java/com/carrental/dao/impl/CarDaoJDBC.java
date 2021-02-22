@@ -1,3 +1,8 @@
+package com.carrental.dao.impl;
+
+import com.carrental.dao.CarDao;
+import com.carrental.model.Car;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
