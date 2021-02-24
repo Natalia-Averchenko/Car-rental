@@ -1,3 +1,5 @@
+import org.apache.log4j.Logger;
+
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
@@ -7,23 +9,23 @@ public class Configuration {
     private String username;
     private String password;
 
-    public String getUsername(){
+    public String getUsername() {
         return this.username;
     }
 
-    public String getPassword(){
+    public String getPassword() {
         return this.password;
     }
 
-    public void setProperties() {
+    public void setProperties(Logger logger) {
         Properties prop = new Properties();
-        try ( FileInputStream fileInputStream = new FileInputStream(PATH_TO_PROPERTIES)){
+        try (FileInputStream fileInputStream = new FileInputStream(PATH_TO_PROPERTIES)) {
             prop.load(fileInputStream);
             this.username = prop.getProperty("username");
             this.password = prop.getProperty("password");
         } catch (IOException e) {
-            System.out.println("Ошибка при чтении username и password");
-            e.printStackTrace();
+            logger.error("Error reading username and password", e);
+            throw new RuntimeException(e);
         }
 
     }

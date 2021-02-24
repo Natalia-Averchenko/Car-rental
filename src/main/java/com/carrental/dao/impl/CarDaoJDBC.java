@@ -81,7 +81,6 @@ public class CarDaoJDBC implements CarDao {
         rs.close();
         ps.close();
         return allCars;
-
     }
 
     public List<Car> getCarsByMakeOfCar(String makeOfCar) throws SQLException {

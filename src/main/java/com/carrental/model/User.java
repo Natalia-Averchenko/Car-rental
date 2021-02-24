@@ -28,23 +28,28 @@ public class User {
     public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
+
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
+
     public void setMiddleName(String middleName) {
         this.middleName = middleName;
     }
+
     public void setDateOfBirth(Date dateOfBirth) {
         this.dateOfBirth = dateOfIssue;
     }
+
     public void setPassportNumber(long passportNumber) {
         this.passportNumber = passportNumber;
     }
+
     public void setDateOfIssue(Date dateOfIssue) {
         this.dateOfBirth = dateOfIssue;
     }
 
-    public int getUserId(){
+    public int getUserId() {
         return this.userId;
     }
 
@@ -74,6 +79,18 @@ public class User {
 
     @Override
     public String toString() {
-        return "User ID: " +this.getUserId()+"\t\tFirst name: " + this.getFirstName() + "\tLast Name: " + this.getLastName() + "\tMiddle name: " + this.getMiddleName() + "\tDate of birth: " + this.getDateOfBirth() + "\tPassport Number: " + this.getPassportNumber() + "\tDate of issue: " + this.getDateOfIssue();
+        return "User ID: " + this.getUserId() + "\t\tFirst name: " + this.getFirstName() + "\tLast Name: " + this.getLastName() + "\tMiddle name: " + this.getMiddleName() + "\tDate of birth: " + this.getDateOfBirth() + "\tPassport Number: " + this.getPassportNumber() + "\tDate of issue: " + this.getDateOfIssue();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == this) {
+            return true;
+        }
+        if (obj == null || obj.getClass() != this.getClass()) {
+            return false;
+        }
+        User user = (User) obj;
+        return ( firstName != null && firstName.equals(user.firstName) && lastName != null && lastName.equals(user.lastName) && middleName != null && middleName.equals(user.middleName) && dateOfBirth != null && dateOfBirth.equals(user.dateOfBirth) && passportNumber == user.passportNumber && dateOfIssue != null && dateOfIssue.equals(user.dateOfIssue));
     }
 }
