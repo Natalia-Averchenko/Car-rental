@@ -1,5 +1,6 @@
-package com.carrental.model;
+package com.carrental.service;
 
+import com.carrental.model.User;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -26,7 +27,6 @@ public class TestRenter {
         Timestamp result = Renter.rentToDate(scan, fromDate);
         Assert.assertEquals(correctAnswer, result);
     }
-
 
     @Test
     public void testGetPassportDetails() {

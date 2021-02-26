@@ -7,7 +7,7 @@ import java.sql.Timestamp;
 import java.util.List;
 import java.util.Set;
 
-public interface RentDao extends Crud <Rent,Integer> {
+public interface RentDao extends Crud <Rent> {
     List<Rent> getRents() throws SQLException;
     Set<Integer> getCarsIDForRent(Timestamp fromDate, Timestamp toDate) throws SQLException;
 }

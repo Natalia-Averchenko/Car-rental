@@ -16,19 +16,6 @@ public class Rent {
         this.toDate = toDate;
     }
 
-    public void setCarId(int carId) {
-        this.carId = carId;
-    }
-    public void setUserId(int userId) {
-        this.userId = userId;
-    }
-    public void setFromDate(Timestamp fromDate) {
-        this.fromDate = fromDate;
-    }
-    public void setToDate(Timestamp toDate) {
-        this.toDate = toDate;
-    }
-
     public int getCarId() {
         return this.carId;
     }

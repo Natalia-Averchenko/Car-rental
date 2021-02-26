@@ -1,5 +1,5 @@
-import com.carrental.model.Owner;
-import com.carrental.model.Renter;
+import com.carrental.service.Owner;
+import com.carrental.service.Renter;
 import org.apache.log4j.Logger;
 
 import java.sql.Connection;

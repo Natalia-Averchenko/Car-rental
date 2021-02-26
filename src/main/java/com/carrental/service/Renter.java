@@ -1,4 +1,4 @@
-package com.carrental.model;
+package com.carrental.service;
 
 import com.carrental.dao.CarDao;
 import com.carrental.dao.RentDao;
@@ -6,6 +6,8 @@ import com.carrental.dao.UserDao;
 import com.carrental.dao.impl.CarDaoJDBC;
 import com.carrental.dao.impl.RentDaoJDBC;
 import com.carrental.dao.impl.UserDaoJDBC;
+import com.carrental.model.Rent;
+import com.carrental.model.User;
 
 import java.sql.Connection;
 import java.sql.Date;
@@ -16,7 +18,7 @@ import java.util.Set;
 
 public class Renter {
 
-    private static String minsec = ":00:00";
+    private static final String minsec = ":00:00";
 
     static Timestamp rentFromDate(Scanner scan) {
         Timestamp fromDate;

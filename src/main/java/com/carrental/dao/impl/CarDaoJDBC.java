@@ -3,10 +3,7 @@ package com.carrental.dao.impl;
 import com.carrental.dao.CarDao;
 import com.carrental.model.Car;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -99,4 +96,12 @@ public class CarDaoJDBC implements CarDao {
         return allCars;
     }
 
+    public int getTheMostProfitableCar() throws SQLException{
+        CallableStatement cs = con.prepareCall("{call the_most_profitable_car(?)}");
+        cs.registerOutParameter(1,java.sql.Types.SMALLINT);
+        cs.execute();
+        short carId = cs.getShort(1);
+        cs.close();
+        return carId;
+    }
 }

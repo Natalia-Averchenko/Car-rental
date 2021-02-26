@@ -25,30 +25,6 @@ public class User {
         this.userId = userId;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    public void setMiddleName(String middleName) {
-        this.middleName = middleName;
-    }
-
-    public void setDateOfBirth(Date dateOfBirth) {
-        this.dateOfBirth = dateOfIssue;
-    }
-
-    public void setPassportNumber(long passportNumber) {
-        this.passportNumber = passportNumber;
-    }
-
-    public void setDateOfIssue(Date dateOfIssue) {
-        this.dateOfBirth = dateOfIssue;
-    }
-
     public int getUserId() {
         return this.userId;
     }

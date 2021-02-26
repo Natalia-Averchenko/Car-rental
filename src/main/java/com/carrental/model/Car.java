@@ -25,23 +25,6 @@ public class Car {
         this.carId = carId;
     }
 
-    public void setMakeOfCar(String makeOfCar) {
-        this.makeOfCar = makeOfCar;
-    }
-    public void setModel(String model) {
-        this.model = model;
-    }
-    public void setPricePerDay(int pricePerDay) {
-        this.pricePerDay = pricePerDay;
-    }
-    public void setTransmission(String transmission) {
-        this.transmission = transmission;
-    }
-    public void setNavigator(boolean navigator) {
-        this.navigator = navigator;
-    }
-
-
     public int getCarId() {
         return this.carId;
     }

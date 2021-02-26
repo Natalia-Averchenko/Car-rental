@@ -2,9 +2,9 @@ package com.carrental.dao;
 
 import java.sql.SQLException;
 
-public interface Crud<T,K> {
+public interface Crud<T> {
     T create(T obj) throws SQLException;
-    T read(K id) throws SQLException;
-    void update(T obj,K id) throws SQLException;
-    void delete(K id) throws SQLException;
+    T read(Integer id) throws SQLException;
+    void update(T obj,Integer id) throws SQLException;
+    void delete(Integer id) throws SQLException;
 }
