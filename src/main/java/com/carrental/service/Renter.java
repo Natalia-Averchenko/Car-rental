@@ -66,15 +66,15 @@ public class Renter {
         return new User(firstName, lastName, middleName, dateOfBirth, passportNumber, dateOfIssue);
     }
 
-    static void reservation(User user, UserDao userDao, RentDao rentDao, int carId, Timestamp fromDate, Timestamp toDate) throws SQLException {
+    static Rent reservation(User user, UserDao userDao, RentDao rentDao, int carId, Timestamp fromDate, Timestamp toDate) throws SQLException {
         int userId = userDao.checkUser(user);
         if (userId == -1) {
             User newUser = userDao.create(user);
             userId = newUser.getUserId();
         }
         Rent rent = new Rent(carId, userId, fromDate, toDate);
-        rentDao.create(rent);
         System.out.println("\nYour rent is successfully finished. Thank you!");
+        return rentDao.create(rent);
     }
 
     public static void rentProcess(Connection con, Scanner scan) throws SQLException {
@@ -103,7 +103,7 @@ public class Renter {
                 else {
                     User user = getPassportDetails(scan);
                     UserDao userDao = new UserDaoJDBC(con);
-                    reservation(user, userDao, rentDao, carId, fromDate, toDate);
+                    System.out.println(reservation(user, userDao, rentDao, carId, fromDate, toDate));
                 }
             } else System.out.println("Thank you for visiting!");
         }
