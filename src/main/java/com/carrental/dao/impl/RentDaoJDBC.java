@@ -77,10 +77,12 @@ public class RentDaoJDBC implements RentDao {
     }
 
     public Set<Integer> getCarsIDForRent(Timestamp fromDate, Timestamp toDate) throws SQLException{
-        String sql = "SELECT car_id FROM (cars LEFT JOIN (SELECT car_id,rent.user_id FROM (cars LEFT JOIN rent USING (car_id)) WHERE ( ? between from_date and to_date) OR ( ? between from_date and to_date)) AS notavailable USING (car_id)) WHERE user_id IS NULL";
+        String sql = "SELECT car_id FROM (cars LEFT JOIN (SELECT car_id,rent.user_id FROM (cars LEFT JOIN rent USING (car_id)) WHERE ( ? between from_date and to_date) OR ( ? between from_date and to_date) OR ( ? < from_date AND ? > to_date)) AS notavailable USING (car_id)) WHERE user_id IS NULL";
         PreparedStatement ps = con.prepareStatement(sql);
         ps.setTimestamp(1,fromDate);
         ps.setTimestamp(2,toDate);
+        ps.setTimestamp(3,fromDate);
+        ps.setTimestamp(4,toDate);
         ResultSet rs = ps.executeQuery();
         Set<Integer> carsIDForRent = new HashSet<>();
         while(rs.next()){

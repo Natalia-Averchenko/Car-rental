@@ -53,4 +53,27 @@ public class Car {
     public String toString(){
         return "Car ID: " +this.getCarId()+"\t\tMake of car: " + this.getMakeOfCar() + "\t\tModel of car: " + this.getModel() +"\t\tPrice per day: " +this.getPricePerDay() +"\t\tTransmission: " + this.getTransmission() +"\t\tNavigator: " + this.getNavigator();
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == this) {
+            return true;
+        }
+        if (obj == null || obj.getClass() != this.getClass()) {
+            return false;
+        }
+        Car car = (Car) obj;
+        return (makeOfCar != null && makeOfCar.equals(car.makeOfCar) && model != null && model.equals(car.model) && pricePerDay == car.pricePerDay && transmission != null && transmission.equals(car.transmission) && navigator == car.navigator);
+    }
+
+    @Override
+    public int hashCode(){
+        int result = (makeOfCar == null) ? 0 : makeOfCar.hashCode();
+        result+= (model == null) ? 0 : model.hashCode();
+        result+=pricePerDay;
+        result+=(transmission == null) ? 0 : transmission.hashCode();
+        result+=(!navigator) ? 0 : 1;
+        return (result/10);
+    }
+
 }

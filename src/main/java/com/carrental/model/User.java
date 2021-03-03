@@ -69,4 +69,16 @@ public class User {
         User user = (User) obj;
         return ( firstName != null && firstName.equals(user.firstName) && lastName != null && lastName.equals(user.lastName) && middleName != null && middleName.equals(user.middleName) && dateOfBirth != null && dateOfBirth.equals(user.dateOfBirth) && passportNumber == user.passportNumber && dateOfIssue != null && dateOfIssue.equals(user.dateOfIssue));
     }
+
+    @Override
+    public int hashCode(){
+        int result = (firstName == null) ? 0 : firstName.hashCode();
+        result+= (lastName == null) ? 0 : lastName.hashCode();
+        result+= (middleName == null) ? 0 : middleName.hashCode();
+        result+= (dateOfBirth == null) ? 0 : dateOfBirth.hashCode();
+        result+= passportNumber;
+        result+= (dateOfIssue == null) ? 0 : dateOfIssue.hashCode();
+        return (result%1000);
+    }
+
 }
